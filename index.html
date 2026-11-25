@@ -1,112 +1,104 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05070c">
-<meta name="description" content="நம்ம லைவ் டிவி - மாவட்டம் வாரியாக தமிழ் உள்ளூர் தொலைக்காட்சி சேனல்கள்.">
-<title>நம்ம லைவ் டிவி | Tamil Local TV</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<style>
-:root{--bg:#05070c;--panel:#0b101b;--panel2:#101827;--text:#f5f7fb;--muted:#929bad;--cyan:#00e5ff;--pink:#e040fb;--green:#00e676;--gold:#ffd600;--orange:#ff6d00}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#102039 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,"Noto Sans Tamil",sans-serif;min-height:100vh}
-button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}
-header{position:sticky;top:0;z-index:10;background:#05070ceF;backdrop-filter:blur(18px);border-bottom:1px solid #1c2738}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px}.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#00e5ff22,#e040fb33);border:1px solid #00e5ff77;box-shadow:0 0 22px #00e5ff20;font-size:22px}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:1.5px;margin-top:2px}.nav-actions{display:flex;gap:9px}.pill{border:1px solid #263247;background:#111a29;color:#dce6f4;padding:9px 13px;border-radius:999px;font-size:12px}.pill.active{border-color:var(--cyan);color:var(--cyan)}
-.hero{padding:38px 0 24px}.hero-box{border:1px solid #26364b;border-radius:24px;padding:28px;background:linear-gradient(120deg,#101c2e 0%,#0a0f19 65%,#191026 100%);position:relative;overflow:hidden}.hero-box:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-110px;background:#00e5ff12;filter:blur(5px)}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(28px,5vw,46px);margin:12px 0 8px;line-height:1.25}.hero p{color:#aab5c6;margin:0;max-width:650px;line-height:1.8;font-size:14px}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.stat{background:#070c15a8;border:1px solid #26364b;border-radius:13px;padding:10px 14px;min-width:105px}.stat b{display:block;font-size:20px}.stat span{font-size:10px;color:var(--muted)}
-.toolbar{display:grid;grid-template-columns:1fr 190px 150px;gap:10px;margin:18px 0}.field{width:100%;background:#0b111c;border:1px solid #263247;color:var(--text);border-radius:13px;padding:13px 14px;outline:none}.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #00e5ff12}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 14px}.section-head h2{font-size:18px;margin:0}.muted{color:var(--muted);font-size:12px}
-.chips{display:flex;gap:8px;overflow:auto;padding:2px 0 12px;scrollbar-width:thin}.chip{white-space:nowrap;background:#0b111c;border:1px solid #263247;color:#bac5d5;border-radius:999px;padding:8px 13px;font-size:12px}.chip.active{border-color:var(--cyan);color:var(--cyan);background:#00e5ff10}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;padding-bottom:50px}.card{background:linear-gradient(145deg,#111a29,#090e17);border:1px solid #263247;border-radius:17px;padding:13px;position:relative;transition:.2s;min-width:0}.card:nth-child(5n+1){border-top:2px solid var(--cyan)}.card:nth-child(5n+2){border-top:2px solid var(--pink)}.card:nth-child(5n+3){border-top:2px solid var(--green)}.card:nth-child(5n+4){border-top:2px solid var(--gold)}.card:nth-child(5n){border-top:2px solid var(--orange)}.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #0008}.card-top{display:flex;align-items:center;gap:11px}.channel-logo{width:52px;height:52px;flex:0 0 52px;border-radius:13px;background:#182437;border:1px solid #34445b;display:grid;place-items:center;overflow:hidden;font-size:22px;color:var(--cyan)}.channel-logo img{width:100%;height:100%;object-fit:contain;background:#fff}.channel-name{font-weight:700;font-size:13px;line-height:1.4;overflow-wrap:anywhere}.channel-meta{font-size:10px;color:var(--muted);margin-top:4px}.card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}.live{font-size:10px;color:var(--green);display:flex;align-items:center;gap:5px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}.watch{border:0;background:linear-gradient(90deg,#00bcd4,#00e5ff);color:#001116;font-weight:800;border-radius:9px;padding:8px 13px;font-size:11px}.fav{border:1px solid #334158;background:#101827;color:#b9c5d6;border-radius:9px;padding:7px 9px}.fav.on{color:#ff6b9a;border-color:#ff6b9a}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px 15px;border:1px dashed #344158;border-radius:16px}
-footer{border-top:1px solid #1c2738;color:var(--muted);padding:22px 0 35px;font-size:11px;line-height:1.8}.modal{position:fixed;inset:0;background:#000d;z-index:30;display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.player{width:min(850px,100%);background:#0b111c;border:1px solid #344158;border-radius:18px;overflow:hidden}.player-head{display:flex;align-items:center;justify-content:space-between;padding:13px 16px}.player video{width:100%;aspect-ratio:16/9;background:#000;display:block}.close{background:#202b3d;border:0;color:white;border-radius:9px;padding:8px 12px}.player-note{padding:12px 16px;color:var(--muted);font-size:11px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:620px){.nav{height:62px}.brand{font-size:16px}.logo{width:38px;height:38px}.nav-actions .pill:first-child{display:none}.hero{padding-top:20px}.hero-box{padding:21px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:10px}.channel-logo{width:43px;height:43px;flex-basis:43px}.channel-name{font-size:12px}.watch{padding:8px 10px}}@media(max-width:360px){.grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namma Live TV - Official Download</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #0b0f19;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      background: #151c2c;
+      border: 1px solid #263147;
+      border-radius: 16px;
+      padding: 36px 28px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+    .version-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+    .download-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .download-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
 </head>
 <body>
-<header><div class="wrap nav">
- <div class="brand"><div class="logo">📺</div><div>நம்ம லைவ் டிவி<small>NAMMA LIVE TV</small></div></div>
- <div class="nav-actions"><button class="pill active" id="allBtn">அனைத்து சேனல்கள்</button><button class="pill" id="favBtn">♥ Favorites</button></div>
-</div></header>
-<main class="wrap">
- <section class="hero"><div class="hero-box">
-  <div class="eyebrow">TAMIL NADU • LOCAL TELEVISION</div>
-  <h1>உங்கள் ஊர் சேனல்கள்,<br><span style="color:var(--cyan)">உங்கள் கையில்.</span></h1>
-  <p>மாவட்டம் வாரியாக உள்ளூர் தொலைக்காட்சி சேனல்களைத் தேடி, தேர்வு செய்து பார்க்கும் ஒரே இடம்.</p>
-  <div class="stats"><div class="stat"><b id="totalCount">—</b><span>மொத்த சேனல்கள்</span></div><div class="stat"><b id="districtCount">—</b><span>மாவட்டங்கள்</span></div><div class="stat"><b>24/7</b><span>எளிய அணுகல்</span></div></div>
- </div></section>
- <div class="section-head"><h2>சேனல்களை கண்டறியுங்கள்</h2><span class="muted" id="resultLabel">Loading…</span></div>
- <div class="toolbar">
-  <input class="field" id="search" placeholder="🔎 சேனல் பெயர் / மாவட்டம் தேடுங்கள்..." aria-label="Search channels">
-  <select class="field" id="district"><option value="">அனைத்து மாவட்டங்கள்</option></select>
-  <select class="field" id="category"><option value="">அனைத்து வகைகள்</option></select>
- </div>
- <div class="chips" id="quickDistricts"></div>
- <div class="section-head"><h2 id="listTitle">அனைத்து சேனல்கள்</h2><span class="muted">Tap to watch</span></div>
- <div class="grid" id="channels"><div class="empty">சேனல்கள் ஏற்றப்படுகின்றன…</div></div>
-</main>
-<footer><div class="wrap">© <span id="year"></span> நம்ம லைவ் டிவி. இந்த தளம் சேனல்களை பட்டியலிடும் directory ஆகும். ஒளிபரப்பு உரிமை உள்ள அல்லது அனுமதி பெற்ற stream link-களை மட்டுமே சேர்க்கவும். சில stream-கள் பிராந்தியம் அல்லது network காரணமாக இயங்காமல் இருக்கலாம்.</div></footer>
-<div class="modal" id="modal"><div class="player"><div class="player-head"><b id="playerTitle">Live TV</b><button class="close" id="closePlayer">✕ மூடு</button></div><video id="video" controls playsinline></video><div class="player-note" id="playerMessage">Stream ஏற்றப்படுகிறது…</div></div></div>
-<script>
-const DATA_URL = "https://gist.githubusercontent.com/gokul-vk/3305a8df5bb305b27e1c8c21d57e1654/raw/7140b1dc166b1d280f211257253d392aa798d3a2/channels.json";
-// If your JSON uses different property names, add them to the key lists in normalize().
-const fallback = [
- {name:"Demo Local TV",district:"Chennai",category:"Local",url:"",logo:""},
- {name:"Demo News",district:"Salem",category:"News",url:"",logo:""}
-];
-let channels=[], favorites=new Set(JSON.parse(localStorage.getItem("nltv-favorites")||"[]")), onlyFav=false, hls=null;
-const $=id=>document.getElementById(id);
-const first=(o,keys)=>{for(const k of keys){if(o&&o[k]!==undefined&&o[k]!==null&&String(o[k]).trim()!=="")return o[k]}return ""};
-function normalize(raw){
- const arr=Array.isArray(raw)?raw:(raw.channels||raw.data||raw.items||[]);
- return arr.map((x,i)=>({
-  id:String(first(x,["id","channel_id","slug"])||i),
-  name:String(first(x,["name","channel_name","title","channel","tv_name"])||"Unnamed channel"),
-  district:String(first(x,["district","region","location","area","town"])||"மற்றவை"),
-  category:String(first(x,["category","type","genre"])||"Local"),
-  url:String(first(x,["url","stream_url","link","m3u8","stream","video_url"])||""),
-  logo:String(first(x,["logo","logo_url","image","thumbnail","icon"])||"")
- })).filter(x=>x.name);
-}
-async function loadData(){
- try{const r=await fetch(DATA_URL,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);const j=await r.json();channels=normalize(j);if(!channels.length)throw Error("No channel rows");}
- catch(e){channels=normalize(fallback);$("resultLabel").textContent="Demo data • JSON load செய்யவில்லை";}
- fillFilters();render();
-}
-function fillFilters(){
- const districts=[...new Set(channels.map(x=>x.district))].sort((a,b)=>a.localeCompare(b));
- const cats=[...new Set(channels.map(x=>x.category))].sort();
- $("district").innerHTML='<option value="">அனைத்து மாவட்டங்கள்</option>'+districts.map(x=>`<option>${esc(x)}</option>`).join("");
- $("category").innerHTML='<option value="">அனைத்து வகைகள்</option>'+cats.map(x=>`<option>${esc(x)}</option>`).join("");
- $("quickDistricts").innerHTML=['அனைத்தும்',...districts.slice(0,18)].map((x,i)=>`<button class="chip ${i===0?'active':''}" data-d="${i===0?'':esc(x)}">${esc(x)}</button>`).join("");
- $("quickDistricts").querySelectorAll("button").forEach(b=>b.onclick=()=>{$("district").value=b.dataset.d;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===b));render()});
- $("totalCount").textContent=channels.length;$("districtCount").textContent=districts.length;
-}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function render(){
- const q=$("search").value.toLowerCase().trim(),d=$("district").value,c=$("category").value;
- const rows=channels.filter(x=>(!onlyFav||favorites.has(x.id))&&(!d||x.district===d)&&(!c||x.category===c)&&(!q||(x.name+" "+x.district+" "+x.category).toLowerCase().includes(q)));
- $("resultLabel").textContent=rows.length+" சேனல்கள்";$("listTitle").textContent=onlyFav?"உங்களுக்கு பிடித்தவை":"அனைத்து சேனல்கள்";
- $("channels").innerHTML=rows.length?rows.map(x=>`<article class="card"><div class="card-top"><div class="channel-logo">${x.logo?`<img src="${esc(x.logo)}" alt="" onerror="this.remove()">`:"📺"}</div><div style="min-width:0"><div class="channel-name">${esc(x.name)}</div><div class="channel-meta">${esc(x.district)} • ${esc(x.category)}</div></div></div><div class="card-bottom"><span class="live"><i class="dot"></i> ${x.url?"STREAM":"LINK இல்லை"}</span><div style="display:flex;gap:6px"><button class="fav ${favorites.has(x.id)?"on":""}" data-fav="${esc(x.id)}" aria-label="Favorite">♥</button><button class="watch" data-watch="${esc(x.id)}">▶ பார்க்க</button></div></div></article>`).join(""):'<div class="empty">சேனல்கள் கிடைக்கவில்லை. வேறு பெயரில் தேடுங்கள்.</div>';
- $("channels").querySelectorAll("[data-fav]").forEach(b=>b.onclick=()=>{const id=b.dataset.fav;favorites.has(id)?favorites.delete(id):favorites.add(id);localStorage.setItem("nltv-favorites",JSON.stringify([...favorites]));render()});
- $("channels").querySelectorAll("[data-watch]").forEach(b=>b.onclick=()=>play(b.dataset.watch));
-}
-function play(id){
- const x=channels.find(c=>c.id===id);if(!x)return;
- $("playerTitle").textContent=x.name;$("modal").classList.add("show");$("playerMessage").textContent="";
- const v=$("video");if(hls){hls.destroy();hls=null}v.pause();v.removeAttribute("src");v.load();
- if(!x.url){$("playerMessage").textContent="இந்த சேனலுக்கு stream URL இன்னும் சேர்க்கப்படவில்லை.";return}
- if(x.url.includes(".m3u8")&&Hls.isSupported()){hls=new Hls();hls.loadSource(x.url);hls.attachMedia(v);hls.on(Hls.Events.ERROR,(_,data)=>{if(data.fatal)$("playerMessage").textContent="Stream இயங்கவில்லை. பின்னர் முயற்சிக்கவும்."});}
- else if(v.canPlayType("application/vnd.apple.mpegurl"))v.src=x.url;else v.src=x.url;
- v.play().catch(()=>{$("playerMessage").textContent="Play அழுத்தி வீடியோவைத் தொடங்குங்கள். சில stream-கள் browser-ல் ஆதரிக்கப்படாமல் இருக்கலாம்."});
-}
-function closePlayer(){const v=$("video");v.pause();v.removeAttribute("src");v.load();if(hls){hls.destroy();hls=null}$("modal").classList.remove("show")}
-$("closePlayer").onclick=closePlayer;$("modal").onclick=e=>{if(e.target===$("modal"))closePlayer()};
-$("search").oninput=render;$("district").onchange=()=>{document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.d===$("district").value));render()};$("category").onchange=render;
-$("allBtn").onclick=()=>{onlyFav=false;$("allBtn").classList.add("active");$("favBtn").classList.remove("active");render()};
-$("favBtn").onclick=()=>{onlyFav=true;$("favBtn").classList.add("active");$("allBtn").classList.remove("active");render()};
-$("year").textContent=new Date().getFullYear();loadData();
-</script>
+
+  <div class="card">
+    <h1>Namma Live TV</h1>
+    <div class="version-badge" id="versionText">Latest Version</div>
+    <p id="notesText">Tamil Nadu Local TV Channels Live Streaming App</p>
+    <a href="https://gokul-vk.github.io/Nammalivetv/nammalivetv.apk" class="download-btn" download>
+      Download Latest APK
+    </a>
+    <div class="footer">SUKMA INFO TECH</div>
+  </div>
+
+  <script>
+    fetch('update.json?t=' + new Date().getTime())
+      .then(res => res.json())
+      .then(data => {
+        if (data.versionName) {
+          document.getElementById('versionText').textContent = 'Version ' + data.versionName;
+        }
+        if (data.releaseNotes) {
+          document.getElementById('notesText').textContent = data.releaseNotes;
+        }
+      })
+      .catch(() => {});
+  </script>
+
 </body>
 </html>
